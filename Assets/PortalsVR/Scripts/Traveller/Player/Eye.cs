@@ -13,6 +13,7 @@ namespace PortalsVR
         #region Properties
         public Camera Camera { get; private set; }
         public List<Portal> Portals { get; set; } = new List<Portal>();
+        public string activeWorld = "World 1";
         #endregion
 
         #region Methods
@@ -20,13 +21,27 @@ namespace PortalsVR
         {
             Camera = GetComponent<Camera>();
         }
+
         private void OnPreCull()
         {
-            for (int i = 0; i < Portals.Count; i++)
+			World.worlds[activeWorld].SetVisible(false);
+
+			for (int i = 0; i < Portals.Count; i++)
             {
-                Portals[i].Render(eye);
+                if (Portals[i].parentWorld == World.worlds[activeWorld]) //|| Portals[i].parentWorld == Portals[i].linkedPortal.parentWorld )
+                {
+                    Portals[i].Render(eye);
+                }
             }
-        }
+
+			// TODO: Update active world
+			World.worlds[activeWorld].SetVisible(true);
+		}
+
+        private void OnPostRender()
+        {
+			// World.worlds[activeWorld].SetVisible(false);
+		}
         #endregion
     }
 }

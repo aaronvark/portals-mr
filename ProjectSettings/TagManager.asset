@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PersistentDoorFrame
   layers:
   - Default
   - TransparentFX
@@ -11,10 +12,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Portal
+  - Traveller
   - Portal.L
   - Portal.R
+  - Movable
+  - AnimationTrigger
+  - GrabInteract
   - 
   - 
   - 
@@ -32,10 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Invis
   - 
   m_SortingLayers:
   - name: Default
