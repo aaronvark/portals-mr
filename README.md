@@ -15,3 +15,45 @@ Important deviations from Lochner's implementation:
 >
 > ### 4. Passthrough pancake:
 > The passthrough is separate into an overlay and underlay layer that can be minipulated on a per-world basis. Any changes happen as seamlessly as possible, but it is currently not possible to visually recurse portals, or to have a separately active view of passthrough visible through a portal.
+>
+> ### 5. Known issues:
+> There is a bug in the OVRCameraRig.cs script when using per-eye cameras (necessary for using render textures in VR, no other combination of settings have been shown to be viable with Meta Quest). The following if-statement should be found and altered as below:
+```
+if (!hmdPresent || monoscopic)
+{
+    leftEyeAnchor.localPosition = centerEyeAnchor.localPosition;
+    rightEyeAnchor.localPosition = centerEyeAnchor.localPosition;
+    leftEyeAnchor.localRotation = centerEyeAnchor.localRotation;
+    rightEyeAnchor.localRotation = centerEyeAnchor.localRotation;
+}
+else
+{
+	// This creates an issue when using per-eye cameras, so just do the same as normal
+	leftEyeAnchor.localPosition = centerEyeAnchor.localPosition;
+	rightEyeAnchor.localPosition = centerEyeAnchor.localPosition;
+	leftEyeAnchor.localRotation = centerEyeAnchor.localRotation;
+	rightEyeAnchor.localRotation = centerEyeAnchor.localRotation;
+				
+    /*
+    Vector3 leftEyePosition = Vector3.zero;
+    Vector3 rightEyePosition = Vector3.zero;
+    Quaternion leftEyeRotation = Quaternion.identity;
+    Quaternion rightEyeRotation = Quaternion.identity;
+
+    if (OVRNodeStateProperties.GetNodeStatePropertyVector3(Node.LeftEye, NodeStatePropertyType.Position,
+            OVRPlugin.Node.EyeLeft, OVRPlugin.Step.Render, out leftEyePosition))
+        leftEyeAnchor.localPosition = leftEyePosition;
+    if (OVRNodeStateProperties.GetNodeStatePropertyVector3(Node.RightEye, NodeStatePropertyType.Position,
+            OVRPlugin.Node.EyeRight, OVRPlugin.Step.Render, out rightEyePosition))
+        rightEyeAnchor.localPosition = rightEyePosition;
+    if (OVRNodeStateProperties.GetNodeStatePropertyQuaternion(Node.LeftEye,
+            NodeStatePropertyType.Orientation, OVRPlugin.Node.EyeLeft, OVRPlugin.Step.Render,
+            out leftEyeRotation))
+        leftEyeAnchor.localRotation = leftEyeRotation;
+    if (OVRNodeStateProperties.GetNodeStatePropertyQuaternion(Node.RightEye,
+            NodeStatePropertyType.Orientation, OVRPlugin.Node.EyeRight, OVRPlugin.Step.Render,
+            out rightEyeRotation))
+        rightEyeAnchor.localRotation = rightEyeRotation;
+    */
+}
+```
