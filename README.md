@@ -1,6 +1,6 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
 
-PortalsMR includes functioning portals in Mixed Reality (MR) for Unity, and is adapted from PortalsVR by [Daniel Lochner: VR Natural Walking in Impossible Spaces](https://daniellochner.itch.io/impossible-spaces-vr)., which itself derives from [Portals](https://github.com/SebLague/Portals) (by Sebastian Lague) and [PocketPortalVR](https://github.com/andrewzimmer906/PocketPortalVR) (by Andrew Zimmer). It was made specifically for my research project on 
+PortalsMR includes functioning portals in Mixed Reality (MR) for Unity, and is adapted from PortalsVR by [Daniel Lochner: VR Natural Walking in Impossible Spaces](https://daniellochner.itch.io/impossible-spaces-vr)., which itself derives from [Portals](https://github.com/SebLague/Portals) (by Sebastian Lague) and [PocketPortalVR](https://github.com/andrewzimmer906/PocketPortalVR) (by Andrew Zimmer). It was made specifically for my research project on Portals in Mixed Reality contexts
 
 Important deviations from Lochner's implementation:
 
